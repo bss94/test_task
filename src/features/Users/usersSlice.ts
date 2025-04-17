@@ -1,29 +1,56 @@
 import { FullUser, User } from '../../types.ts';
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchOneUser, fetchUsers } from './usersThunk.ts';
 
 interface UsersState {
   users: User[];
-  fetchUsers: boolean;
+  fetchingUsers: boolean;
   oneUser: FullUser | null;
-  fetchOneUser: boolean;
+  fetchingOneUser: boolean;
 }
 
 const initialState: UsersState = {
   users: [],
-  fetchUsers: false,
+  fetchingUsers: false,
   oneUser: null,
-  fetchOneUser: false,
+  fetchingOneUser: false,
 };
 
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.users = [];
+        state.fetchingUsers = true;
+      })
+      .addCase(fetchUsers.fulfilled, (state, { payload: users }) => {
+        state.users = users;
+        state.fetchingUsers = false;
+      })
+      .addCase(fetchUsers.rejected, (state) => {
+        state.fetchingUsers = false;
+      });
+    builder
+      .addCase(fetchOneUser.pending, (state) => {
+        state.oneUser = null;
+        state.fetchingOneUser = true;
+      })
+      .addCase(fetchOneUser.fulfilled, (state, { payload: user }) => {
+        state.oneUser = user;
+        state.fetchingOneUser = false;
+      })
+      .addCase(fetchOneUser.rejected, (state) => {
+        state.fetchingOneUser = false;
+      });
+  },
   selectors: {
     selectUsers: (state) => state.users,
-    selectFetchUsers: (state) => state.fetchUsers,
+    selectFetchUsers: (state) => state.fetchingUsers,
     selectOneUser: (state) => state.oneUser,
-    selectFetchOneUser: (state) => state.fetchOneUser,
+    selectFetchOneUser: (state) => state.fetchingOneUser,
   },
 });
 
