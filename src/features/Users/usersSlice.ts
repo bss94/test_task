@@ -19,16 +19,12 @@ const initialState: UsersState = {
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {
-    resetOneUser: (state) => {
-      state.oneUser = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
-        state.users = [];
         state.fetchingUsers = true;
+        state.users = [];
       })
       .addCase(fetchUsers.fulfilled, (state, { payload: users }) => {
         state.users = users;
@@ -39,8 +35,8 @@ export const usersSlice = createSlice({
       });
     builder
       .addCase(fetchOneUser.pending, (state) => {
-        state.oneUser = null;
         state.fetchingOneUser = true;
+        state.oneUser = null;
       })
       .addCase(fetchOneUser.fulfilled, (state, { payload: user }) => {
         state.oneUser = user;
@@ -60,4 +56,3 @@ export const usersSlice = createSlice({
 
 export const usersReducer = usersSlice.reducer;
 export const { selectUsers, selectFetchUsers, selectOneUser, selectFetchOneUser } = usersSlice.selectors;
-export const { resetOneUser } = usersSlice.actions;

@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
 import { useNavigate, useParams } from 'react-router-dom';
-import { resetOneUser, selectFetchOneUser } from './usersSlice.ts';
+import { selectFetchOneUser } from './usersSlice.ts';
 import { useEffect } from 'react';
 import { fetchOneUser } from './usersThunk.ts';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner.tsx';
@@ -20,7 +20,6 @@ const OneUser = () => {
     }
   }, [dispatch, id]);
   const navigateToMain = () => {
-    dispatch(resetOneUser());
     navigate('/users');
   };
 

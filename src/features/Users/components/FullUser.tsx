@@ -5,6 +5,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import WorkIcon from '@mui/icons-material/Work';
+import Posts from '../../Posts/Posts.tsx';
 
 const FullUser = () => {
   const user = useAppSelector(selectOneUser);
@@ -41,8 +42,9 @@ const FullUser = () => {
           </Grid>
         </Card>
       </Grid>
-
-      <Grid size={12}></Grid>
+      <Grid size={12}>
+        <Posts />
+      </Grid>
     </Grid>
   ) : (
     <Grid container spacing={2}>

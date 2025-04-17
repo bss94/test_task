@@ -15,15 +15,12 @@ const initialState: PostsState = {
 export const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    resetPosts: (state) => {
-      state.posts = [];
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
         state.fetchingPosts = true;
+        state.posts = [];
       })
       .addCase(fetchPosts.fulfilled, (state, { payload: posts }) => {
         state.posts = posts;
@@ -42,4 +39,3 @@ export const postsSlice = createSlice({
 
 export const postsReducer = postsSlice.reducer;
 export const { selectPosts, selectFetchingPosts } = postsSlice.selectors;
-export const { resetPosts } = postsSlice.actions;

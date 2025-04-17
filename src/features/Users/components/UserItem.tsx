@@ -24,11 +24,11 @@ const UserItem: React.FC<Props> = ({ user }) => {
         </Typography>
         <Box display="flex" alignItems="center" justifyContent="flex-start" sx={{ mt: 1 }}>
           <AlternateEmailIcon fontSize="small" color="info" sx={{ mr: 1 }} />
-          <Typography variant="subtitle1">{user.email}</Typography>
+          <Typography variant="subtitle2">{user.email}</Typography>
         </Box>
         <Box display="flex" alignItems="center" justifyContent="flex-start" sx={{ mt: 1 }}>
           <LocationCityIcon fontSize="small" color="info" sx={{ mr: 1 }} />
-          <Typography variant="subtitle1">{user.address.city}</Typography>
+          <Typography variant="subtitle2">{user.address.city}</Typography>
         </Box>
       </CardActionArea>
     </Card>
