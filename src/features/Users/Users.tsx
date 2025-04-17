@@ -14,7 +14,7 @@ const Users = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  return loading ? (<LoadingSpinner />) : (<UsersList users={users} />);
+  return loading ? <LoadingSpinner /> : <UsersList users={users} />;
 };
 
 export default Users;
