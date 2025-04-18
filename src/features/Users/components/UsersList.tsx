@@ -23,11 +23,12 @@ const UsersList: React.FC<Props> = ({ users, loading }) => {
   return (
     !loading && (
       <Grid container spacing={2}>
-        <Grid size={12}>
+        <Grid size={{ md:6,sm:6,xs:12 }}>
           <Typography variant="h4">Users List</Typography>
         </Grid>
-
-        <FilterUsersByUsername filterUsers={filterUsers} resetFilter={resetFilterUsers} />
+        <Grid size={{ md:6,sm:6,xs:12 }}>
+          <FilterUsersByUsername filterUsers={filterUsers} resetFilter={resetFilterUsers} />
+        </Grid>
 
         {users.length > filteredUsers.length && (
           <Grid size={12} display="flex" alignItems="center" justifyContent="flex-end">

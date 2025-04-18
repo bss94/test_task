@@ -36,6 +36,7 @@ const FilterUsersByUsername: React.FC<Props> = ({ filterUsers, resetFilter }) =>
       onSubmit={submitFormHandler}
     >
       <TextField
+        fullWidth
         size="small"
         type="text"
         label="Filter by name"
